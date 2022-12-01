@@ -1,0 +1,27 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.bg {
+  color: grey;
+}
+.big {
+  transform: scale(1.2);
+}
+input {
+  width: 2rem;
+  padding: 0.5rem;
+  border-style: none;
+  text-align: center;
+}
+.emoji-name {
+  display: inline;
+}
+.stock {
+  border-radius: 5px;
+  padding:1rem;
+  /* width: 20rem; */
+}
+section{
+background-color:antiquewhite;
+}
