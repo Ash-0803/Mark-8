@@ -7,7 +7,7 @@ const url = "https://unpkg.com/emoji.json@13.1.0/emoji.json";
 
 export default function App() {
   const [emoji, setEmoji] = useState("");
-  const [rand, setRand] = useState("");
+  const [rand, setRand] = useState([]);
   const [data, setData] = useState("");
 
   useEffect(()=>{
@@ -39,13 +39,14 @@ export default function App() {
     console.log("clicked", item);
   }
 
-
-
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+  
   function renderEmoji(){
       for (let i = 0; i < 5; i++) {
-        let some = Math.getRandomInt(4590);
-        setRand(data[some].char);
-  
+        let some = getRandomInt(4590);
+        setRand(prev => [...prev, data[some]?.char]);
       }
   }
 
@@ -78,7 +79,7 @@ export default function App() {
       <h3 className="emoji-name"> = {emoji}</h3>
       <section>
         <h2 className="stock">emoji's on the stock</h2>
-        {rand}
+        {rand.map(i => i)}
       </section>
     </div>
   );
