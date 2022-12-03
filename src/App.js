@@ -39,12 +39,14 @@ export default function App() {
     console.log("clicked", item);
   }
 
-
+  function getRandomInt(number){
+    return Math.floor(Math.random()*number);
+  }
 
   function renderEmoji(){
       for (let i = 0; i < 5; i++) {
-        let some = Math.getRandomInt(4590);
-        setRand(data[some].char);
+        let some = getRandomInt(4590);
+        setRand(data[some]?.char);
   
       }
   }
