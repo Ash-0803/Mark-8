@@ -8,10 +8,14 @@
 .big {
   transform: scale(1.2);
 }
+ul{
+ list-style: none;
+ margin-left: -3rem;
+
+}
 input {
   width: 2rem;
   padding: 0.5rem;
-  border-style: none;
   text-align: center;
 }
 .emoji-name {
@@ -24,4 +28,9 @@ input {
 }
 section{
 background-color:antiquewhite;
+}
+.emojis{
+  font-size:2rem;
+  letter-spacing: 1rem;
+  padding-bottom: 2rem;
 }
