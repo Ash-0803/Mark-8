@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import "./styles.css";
-let color = "blue";
-let headText = "Ashish's Practice Project";
-const array = ["milk", "eggs", "peanut", "butter"];
+let headText = "Emoji Shower";
+let descriptionText = "Are you also tired of not able to find the right emoji? ";
+let descriptionText2 = "Use our api to get the name of the emoji and use it effeciently from next time."
+// const array = ["milk", "eggs", "peanut", "butter"];
 const url = "https://unpkg.com/emoji.json@13.1.0/emoji.json";
 
 export default function App() {
@@ -17,33 +18,32 @@ export default function App() {
     .then((json) => {
       setData(json);
     });
-   },[""]) 
+   },['']) 
 
   useEffect(() => {
     renderEmoji()
-  },[data])
+},[data])
 
 
   function doThis(event) {
-    const input = event.target.value;
+  const input = event.target.value;
+    data.forEach((item) => {
+      if (item.char === input) {
+        setEmojiName(item.name);
+      }
+    });
+  };
 
-        data.map((item) => {
-          if (item.char === input) {
-            setEmojiName(item.name);
-          }
-        });
-      };
-
-  function clickHandler(item) {
-    console.log("clicked", item);
-  }
+  // function clickHandler(item) {
+  //   console.log("clicked", item);
+  // }
 
   function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
   function emojisClicked(i){
     setEmoji(i);
-    data.map((item) => {
+    data.forEach((item) => {
       if (item.char === i) {
         setEmojiName(item.name);
       }
@@ -60,10 +60,10 @@ export default function App() {
   }
   return (
     <div className="App">
-      <h1 style={{ color: color }} className="main-head">
+      <h1 className="main-head">
         {headText}
       </h1>
-      <h2>This is a list for practice </h2>
+      {/* <h2>This is a list for practice </h2>
 
       <ul>
         {array.map((item, index) => {
@@ -80,14 +80,13 @@ export default function App() {
               </li>
             );
         })}
-      </ul>
+      </ul> */}
 
-      <h1> Emoji Shower </h1>
-      <h5>Enter an emoji to see magic!</h5>
+      <h4 className="description">{descriptionText}<br/>{descriptionText2}</h4>
       <input onChange={doThis} placeholder={emoji} id="emojiInput"></input>
       <h3 className="emoji-name"> = {emojiName}</h3>
       <section>
-        <h2 className="stock">emoji's on the stock</h2>
+        <h2 className="stock">Emojies on the stock</h2>
 
         <div className="emojis">
         {rand.map(i => [
