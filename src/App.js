@@ -3,7 +3,7 @@ import "./styles.css";
 let headText = "Emoji Shower";
 let descriptionText = "Are you also tired of not able to find the right emoji? ";
 let descriptionText2 = "Use our api to get the name of the emoji and use it effeciently from next time."
-// const array = ["milk", "eggs", "peanut", "butter"];
+// const array = ["milk", "eggs", "peanut", "butter"]; //list items
 const url = "https://unpkg.com/emoji.json@13.1.0/emoji.json";
 
 export default function App() {
@@ -17,11 +17,19 @@ export default function App() {
     .then((response) => response.json())
     .then((json) => {
       setData(json);
-    });
-   },['']) 
-
+    })
+  },[]) 
+  
   useEffect(() => {
-    renderEmoji()
+    function renderEmoji(){
+      let d = []
+        for (let i = 0; i < 5; i++) {
+          let some = getRandomInt(4590);
+          d = [...d, data[some]?.char ]
+        }
+        setRand(d);
+    }
+    renderEmoji();
 },[data])
 
 
@@ -34,7 +42,8 @@ export default function App() {
     });
   };
 
-  // function clickHandler(item) {
+  // Function to act while clicking on the item  in the list.
+  // function clickHandler(item) { 
   //   console.log("clicked", item);
   // }
 
@@ -50,14 +59,7 @@ export default function App() {
     });
   }
 
-  function renderEmoji(){
-    let d = []
-      for (let i = 0; i < 5; i++) {
-        let some = getRandomInt(4590);
-        d = [...d, data[some]?.char ]
-      }
-      setRand(d);
-  }
+  
   return (
     <div className="App">
       <h1 className="main-head">
